@@ -1,7 +1,35 @@
 FROM trestletech/plumber
 MAINTAINER Mohamed El Idrissi <mohamed.elidrissi@inalco.fr>
 
-COPY [".", "./"]
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    file \
+    libcurl4-openssl-dev \
+    libedit2 \
+    libssl-dev \
+    lsb-release \
+    psmisc \
+    procps \
+    wget \
+    libxml2-dev \
+    libpq-dev \
+    libssh2-1-dev \
+    ca-certificates \
+    libglib2.0-0 \
+	libxext6 \
+	libsm6  \
+	libxrender1 \
+	bzip2 \
+    apache2 \
+    zlib1g-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/
+
+
+RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite","xml2"))'
+## RUN R -e 'devtools::install_github("trestletech/plumber")'
+## RUN install2.r plumber
 
 #RUN apt-get update && apt-get install -y --no-install-recommends build-essential python3.6 python3-pip python3-setuptools python3-dev
 
@@ -28,11 +56,11 @@ RUN /opt/conda/bin/conda install pip
 # let R know the right version of python to use
 ENV RETICULATE_PYTHON /opt/conda/bin/python
 
-RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite","xml2"))'
-## RUN R -e 'devtools::install_github("trestletech/plumber")'
-## RUN install2.r plumber
+
 
 ## RUN pip3 install
+
+COPY [".", "./"]
 
 ## EXPOSE 8000
 ENTRYPOINT ["R", "-e", "pr <- plumber::plumb(commandArgs()[4]); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT')))"]
