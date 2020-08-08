@@ -21,12 +21,21 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
 ##    /opt/conda/bin/conda clean -tipsy && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+    echo "conda activate base" >> ~/.bashrc && \
+    ./configure \
+        --build="$gnuArch" \
+        --enable-loadable-sqlite-extensions \
+        --enable-shared \
+        --enable-unicode=ucs4
+        --with-system-expat \
+        --with-system-ffi \
+        --without-ensurepip \
 ENV PATH /opt/conda/bin:$PATH
 
 ## install tensorflow and h5py using the pip that links to miniconda (the default pip is for python 2.7)
-RUN /opt/conda/bin/pip install audio-metadata && \
-    ./configure --enable-shared --enable-unicode=ucs4
+RUN /opt/conda/bin/pip install audio-metadata
+
+##    ./configure --enable-shared --enable-unicode=ucs4
 ##    /opt/conda/bin/conda clean -tipsy
 
 # let R know the right version of python to use
