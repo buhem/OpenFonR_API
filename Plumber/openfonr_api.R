@@ -62,7 +62,7 @@ function(speaker,callType){
   
   library(reticulate)
   #use_python("/opt/conda/bin/python")
-  use_condaenv(condaenv = NULL, conda = "/opt/conda/bin/python", required = TRUE)
+  use_condaenv(condaenv = NULL, conda = "/opt/conda/lib/python3.7", required = TRUE)
 
   
   library(jsonlite)
