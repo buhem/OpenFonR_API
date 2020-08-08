@@ -27,7 +27,6 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
         --enable-loadable-sqlite-extensions \
         --enable-shared \
         --enable-unicode=ucs4
-        --with-system-expat \
         --with-system-ffi \
         --without-ensurepip \
 ENV PATH /opt/conda/bin:$PATH
