@@ -60,6 +60,8 @@ function(speaker,callType){
  
   
   library(reticulate)
+  use_python("/opt/conda/bin/python")
+
   
   library(jsonlite)
   
