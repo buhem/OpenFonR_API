@@ -1,6 +1,7 @@
 FROM trestletech/plumber
 MAINTAINER Mohamed El Idrissi <mohamed.elidrissi@inalco.fr>
 
+COPY [".", "./"]
 
 RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite","xml2"))'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
@@ -45,7 +46,7 @@ ENV RETICULATE_PYTHON /opt/conda/bin/python
 
 ## RUN pip3 install
 
-COPY [".", "./"]
+
 
 ## EXPOSE 8000
 ENTRYPOINT ["R", "-e", "pr <- plumber::plumb(commandArgs()[4]); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT')))"]
