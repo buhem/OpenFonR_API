@@ -14,4 +14,4 @@ RUN install2.r plumber
 
 ## EXPOSE 8000
 ENTRYPOINT ["R", "-e", "pr <- plumber::plumb(commandArgs()[4]); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT')))"]
-CMD ["/app/openfonr_api.R"]
+CMD ["openfonr_api.R"]
