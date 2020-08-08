@@ -62,7 +62,7 @@ function(speaker,callType){
   
   library(reticulate)
   #use_python("/opt/conda/bin/python")
-  use_condaenv(condaenv = NULL, conda = "/opt/conda/lib/python3.7", required = TRUE)
+  #use_condaenv(condaenv = NULL, conda = "/opt/conda/lib/python3.7", required = TRUE)
 
   
   library(jsonlite)
@@ -88,7 +88,7 @@ function(speaker,callType){
   
 
   
-  reticulate::py_install('audio-metadata', pip = T)
+  #reticulate::py_install('audio-metadata', pip = T)
 
   
   meta <- reticulate::import("audio_metadata")
