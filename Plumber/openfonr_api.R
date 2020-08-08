@@ -61,7 +61,8 @@ function(speaker,callType){
   renv::refresh()
   
   library(reticulate)
-  use_python("/opt/conda/bin/python")
+  #use_python("/opt/conda/bin/python")
+  use_condaenv(condaenv = 'py37', required = TRUE)
 
   
   library(jsonlite)
