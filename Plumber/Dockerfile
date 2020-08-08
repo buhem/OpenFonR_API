@@ -3,7 +3,8 @@ MAINTAINER Mohamed El Idrissi <mohamed.elidrissi@inalco.fr>
 
 COPY [".", "./"]
 
-RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite","xml2"))'
+RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite"))'
+RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
 ## RUN install2.r plumber
 
@@ -23,20 +24,20 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc && \
-    ./configure \
-        --build="$gnuArch" \
-        --enable-loadable-sqlite-extensions \
-        --enable-shared \
-        --enable-unicode=ucs4 \
-        --with-system-expat \
-        --with-system-ffi \
-        --without-ensurepip \
 ENV PATH /opt/conda/bin:$PATH
 
-## install tensorflow and h5py using the pip that links to miniconda (the default pip is for python 2.7)
+## install audio-metadata using pip
 RUN /opt/conda/bin/pip install audio-metadata
 
 ##    ./configure --enable-shared --enable-unicode=ucs4
+##     ./configure \
+##        --build="$gnuArch" \
+##        --enable-loadable-sqlite-extensions \
+##        --enable-shared \
+##        --enable-unicode=ucs4 \
+##        --with-system-expat \
+##        --with-system-ffi \
+##        --without-ensurepip \
 ##    /opt/conda/bin/conda clean -tipsy
 
 # let R know the right version of python to use
