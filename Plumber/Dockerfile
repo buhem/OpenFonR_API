@@ -3,10 +3,10 @@ MAINTAINER Mohamed El Idrissi <mohamed.elidrissi@inalco.fr>
 
 COPY [".", "./"]
 
-RUN apt-get update -qq && apt-get install -y \
-  git-core \
-  libssl-dev \
-  libcurl4-gnutls-dev
+## RUN apt-get update -qq && apt-get install -y \
+##  git-core \
+##  libssl-dev \
+##  libcurl4-gnutls-dev
 
 RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite"))'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
