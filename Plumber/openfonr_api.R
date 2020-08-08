@@ -57,7 +57,8 @@ function(speaker,callType){
 
 function(speaker,callType){
   
- 
+  library(renv)  
+  renv::refresh()
   
   library(reticulate)
   use_python("/opt/conda/bin/python")
@@ -65,8 +66,7 @@ function(speaker,callType){
   
   library(jsonlite)
   
-  library(renv)  
-  renv::refresh()
+ 
   
 
   
