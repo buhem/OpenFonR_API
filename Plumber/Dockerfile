@@ -22,7 +22,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
 ENV PATH /opt/conda/bin:$PATH
 
 # install tensorflow and h5py using the pip that links to miniconda (the default pip is for python 2.7)
-RUN /opt/conda/bin/conda install audio-metadata && \
+RUN /opt/conda/bin/conda install pip && \
     /opt/conda/bin/conda clean -tipsy
 
 # let R know the right version of python to use
