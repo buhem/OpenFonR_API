@@ -23,7 +23,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
 ##    /opt/conda/bin/conda clean -tipsy && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
 ENV PATH /opt/conda/bin:$PATH
 
 ## install audio-metadata using pip
