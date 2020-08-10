@@ -1,0 +1,49 @@
+[
+  {
+    "resolution": {
+      "format": [
+        "WAVEAudioFormat.PCM"
+      ],
+      "sample_rate": [
+        44100
+      ],
+      "bit_depth": [
+        16
+      ]
+    },
+    "data": {
+      "author": [
+        "Mohamed El Idrissi"
+      ],
+      "topic": [
+        "Phonetic study"
+      ],
+      "object_of_study": [
+        "Alveolar rhotic study"
+      ],
+      "speaker": [
+        "Informant 2"
+      ],
+      "copyright": [
+        "CC-BY-NC-ND"
+      ],
+      "comment": [
+        "This recording was made for my thesis (https://tel.archives-ouvertes.fr/tel-02079768)"
+      ]
+    },
+    "recording_info": {
+      "date": [
+        "2016"
+      ],
+      "place": [
+        "Berber Sud-Oranais sout3056 Asla"
+      ],
+      "material": [
+        "digital recording (Olympus WS813); electret microphone (MM701)."
+      ]
+    },
+    "archiving": [
+      "10.5281/zenodo.3363050"
+    ]
+  }
+]
