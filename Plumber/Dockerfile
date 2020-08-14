@@ -54,9 +54,9 @@ ENV PATH /opt/conda/bin:$PATH
 
 ##
 
-RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml 
-RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml2
-RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-curl
+RUN /opt/conda/bin/conda install -- yes --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml 
+RUN /opt/conda/bin/conda install -- yes --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml2
+RUN /opt/conda/bin/conda install -- yes --no-update-deps --prefix /usr/lib/R/site-library -c r r-curl
 
 
 ## install R libraries
