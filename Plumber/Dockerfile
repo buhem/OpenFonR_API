@@ -20,7 +20,7 @@ COPY [".", "./"]
 
 
 ## install R libraries
-RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"))'
+RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"), repo="http://cran.rstudio.com/")'
 
 
 ## install xml2
@@ -54,9 +54,9 @@ ENV PATH /opt/conda/bin:$PATH
 
 ##
 
-RUN /opt/conda/bin/conda install -c r r-xml
-RUN /opt/conda/bin/conda install -c r r-xml2
-
+RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml 
+RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-xml2
+RUN /opt/conda/bin/conda install -- yes --freeze-installed --no-update-deps --prefix /usr/lib/R/site-library -c r r-curl
 
 
 ## install R libraries
