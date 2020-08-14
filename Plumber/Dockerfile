@@ -22,7 +22,7 @@ COPY [".", "./"]
 ## https://hub.docker.com/r/jeroenooms/xml2
 ## RUN git clone https://github.com/hadley/xml2 \
 ##	&& R CMD build xml2 --no-build-vignettes \
-	&& R CMD INSTALL xml2_*.tar.gz --install-tests
+##	&& R CMD INSTALL xml2_*.tar.gz --install-tests
 
 ## RUN R -e 'testthat::test_package("xml2"); q("no");' || true
 
