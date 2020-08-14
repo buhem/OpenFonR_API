@@ -18,6 +18,11 @@ LABEL org.label-schema.name="OpenFonR_API" \
 
 COPY [".", "./"]
 
+
+## install R libraries
+RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"))'
+
+
 ## install xml2
 ## https://hub.docker.com/r/jeroenooms/xml2
 ## RUN git clone https://github.com/hadley/xml2 \
@@ -55,8 +60,9 @@ RUN /opt/conda/bin/conda install -c r r-xml2
 
 
 ## install R libraries
-RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","dplyr","rlist"))'
-#RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
+RUN R -e 'install.packages(c("devtools","rlist"))'
+
+## RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
 
 
@@ -71,7 +77,7 @@ RUN /opt/conda/bin/pip install audio-metadata
 
 
 
-# indicate the version of python to use
+## indicate the version of python to use
 ENV RETICULATE_PYTHON /opt/conda/bin/python
 
 
