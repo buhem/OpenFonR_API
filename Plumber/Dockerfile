@@ -24,7 +24,7 @@ COPY [".", "./"]
 ## RUN R -e 'options(devtools.install.args = c("--no-multiarch", "--no-test-load"))'
 ## INSTALL_opts=c("--install-args","--no-html", "--no-multiarch","--no-data","--no-test-load")
 ## RUN R CMD build . --install-args --no-html
-RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"),repo="http://cran.rstudio.com/",dependencies=c("Depends","LinkingTo"),INSTALL_opts=c("--install-args","--no-html","--no-multiarch","--no-data","--no-test-load"))'
+RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
 
 
 ## install xml2
@@ -67,9 +67,9 @@ RUN /opt/conda/bin/conda install -c anaconda libxml2
 ## install R libraries
 
 RUN wget https://cran.r-project.org/src/contrib/XML_3.99-0.5.tar.gz
-RUN R CMD INSTALL --build --install-args --no-html --no-multiarch --no-data --no-test-load XML_3.99-0.5.tar.gz
+RUN R CMD INSTALL --build --no-html --no-multiarch --no-data --no-test-load XML_3.99-0.5.tar.gz
 
-RUN R -e 'install.packages(c("rlist"),repo="http://cran.rstudio.com/",dependencies=c("Depends","LinkingTo"),INSTALL_opts=c("--install-args","--no-html","--no-multiarch","--no-data","--no-test-load"))'
+RUN R -e 'install.packages(c("rlist"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
 
 ## RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
