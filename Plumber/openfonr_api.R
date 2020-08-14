@@ -90,8 +90,7 @@ function(speaker,callType){
   
   library(dplyr)
   
-  if (!requireNamespace(“rlist”, quietly = TRUE)) install.packages(“rlist”)
-  
+ 
   library(rlist)
   
   
