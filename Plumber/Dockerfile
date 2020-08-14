@@ -20,7 +20,8 @@ COPY [".", "./"]
 
 
 ## install R libraries
-RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"), repo="http://cran.rstudio.com/")'
+#RUN R -e 'options(devtools.install.args = c("--no-multiarch", "--no-test-load"))'
+RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"), repo="http://cran.rstudio.com/", dependencies = NA, INSTALL_opts = c("--no-docs","--no-html,"--no-multiarch","--no-test-load","--no-data"))'
 
 
 ## install xml2
@@ -54,13 +55,13 @@ ENV PATH /opt/conda/bin:$PATH
 
 ##
 
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml 
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
+#RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml 
+#RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
 RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-curl
 
 
 ## install R libraries
-RUN R -e 'install.packages(c("devtools","rlist"), repo="http://cran.rstudio.com/")'
+RUN R -e 'install.packages("rlist", repo="http://cran.rstudio.com/", dependencies = NA, INSTALL_opts = c("--no-docs","--no-html,"--no-multiarch","--no-test-load","--no-data"))'
 
 ## RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
