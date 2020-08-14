@@ -1,22 +1,44 @@
 FROM trestletech/plumber
-MAINTAINER Mohamed El Idrissi <mohamed.elidrissi@inalco.fr>
+LABEL org.label-schema.name="OpenFonR_API" \
+      org.label-schema.vcs-url="https://github.com/buhem/OpenFonR_API" \
+      org.label-schema.version="1.0" \
+      org.label-schema.build-date="2020" \
+      org.label-schema.schema-version="1.0" \
+      
+      org.opencontainers.image.title="OpenFonR_API" \
+      org.opencontainers.image.licenses="LicenseRef-MIT-Style-1" \
+      org.opencontainers.image.source="https://github.com/buhem/OpenFonR_API" \
+      org.opencontainers.image.version="1.0" \
+      org.opencontainers.image.created="2020" \
+      org.opencontainers.image.authors="Mohamed El Idrissi <mohamed.elidrissi-at-inalco.fr>" \
+      org.opencontainers.image.description="OpenFonR_API is a microservice used to share open research data. The user can get recordings, annotations and metadata on Sud-Oranais Berber varieties to study the sound system of this language"
+      
+
+
 
 COPY [".", "./"]
 
-RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","jsonlite"))'
+## install R libraries
+RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","dplyr","rlist"))'
 RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
-## RUN install2.r plumber
 
-#RUN apt-get update && apt-get install -y --no-install-recommends build-essential python3.6 python3-pip python3-setuptools python3-dev
 
-## RUN apt-get update -qq && apt-get install -y \
-##  git-core \
-##  libssl-dev \
-##  libcurl4-gnutls-dev
+## install xml2
+## https://hub.docker.com/r/jeroenooms/xml2
+RUN git clone https://github.com/hadley/xml2 \
+	&& R CMD build xml2 --no-build-vignettes \
+	&& R CMD INSTALL xml2_*.tar.gz --install-tests
 
-## install miniconda, and set the appropriate path variables.
-## install Python 3.7 (Miniconda) and Tensorflow Python packages then set path variables.
+RUN R -e 'testthat::test_package("xml2"); q("no");' || true
+
+RUN R CMD check xml2_*.tar.gz
+
+
+## install miniconda
+## install Python 3.7 from miniconda
+## indicate the path variables.
+## https://github.com/tmobile/r-tensorflow-api
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
@@ -29,23 +51,10 @@ ENV PATH /opt/conda/bin:$PATH
 ## install audio-metadata using pip
 RUN /opt/conda/bin/pip install audio-metadata
 
-##    ./configure --enable-shared --enable-unicode=ucs4
-##     ./configure \
-##        --build="$gnuArch" \
-##        --enable-loadable-sqlite-extensions \
-##        --enable-shared \
-##        --enable-unicode=ucs4 \
-##        --with-system-expat \
-##        --with-system-ffi \
-##        --without-ensurepip \
-##    /opt/conda/bin/conda clean -tipsy
 
-# let R know the right version of python to use
+# indicate the version of python to use
 ENV RETICULATE_PYTHON /opt/conda/bin/python
 
-
-
-## RUN pip3 install
 
 
 
