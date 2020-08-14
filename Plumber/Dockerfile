@@ -64,7 +64,7 @@ ENV PATH /opt/conda/bin:$PATH
 ## RUN /opt/conda/bin/conda install -c anaconda libxml2
 RUN /opt/conda/bin/conda create -p /usr/local/lib/R/site-library -y -c r r-rlist
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    /opt/conda/bin/conda activate /usr/local/lib/R/site-library
+    echo "conda activate /usr/local/lib/R/site-library" >> ~/.bashrc
 
 ## install R libraries
 
