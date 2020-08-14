@@ -54,9 +54,9 @@ ENV PATH /opt/conda/bin:$PATH
 
 ##
 
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y --no-update-deps -c r r-xml 
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y --no-update-deps -c r r-xml2
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y --no-update-deps -c r r-curl
+RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml 
+RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
+RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-curl
 
 
 ## install R libraries
