@@ -18,21 +18,28 @@ LABEL org.label-schema.name="OpenFonR_API" \
 
 COPY [".", "./"]
 
+## install xml2
+## https://hub.docker.com/r/jeroenooms/xml2
+## RUN git clone https://github.com/hadley/xml2 \
+##	&& R CMD build xml2 --no-build-vignettes \
+	&& R CMD INSTALL xml2_*.tar.gz --install-tests
+
+## RUN R -e 'testthat::test_package("xml2"); q("no");' || true
+
+## RUN R CMD check xml2_*.tar.gz
+
+RUN R -e 'install.packages("XML", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
+
+RUN R -e 'install.packages("xml2", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
+
+
 ## install R libraries
 RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","dplyr","rlist"))'
 RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
 
 
-## install xml2
-## https://hub.docker.com/r/jeroenooms/xml2
-RUN git clone https://github.com/hadley/xml2 \
-	&& R CMD build xml2 --no-build-vignettes \
-	&& R CMD INSTALL xml2_*.tar.gz --install-tests
 
-RUN R -e 'testthat::test_package("xml2"); q("no");' || true
-
-RUN R CMD check xml2_*.tar.gz
 
 
 ## install miniconda
