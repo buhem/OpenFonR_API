@@ -62,7 +62,7 @@ ENV PATH /opt/conda/bin:$PATH
 ## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
 ## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-curl
 ## RUN /opt/conda/bin/conda install -c anaconda libxml2
-RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-rlist
+RUN /opt/conda/bin/conda create -p /usr/local/lib/R/site-library -y -c r r-rlist
 
 ## install R libraries
 
