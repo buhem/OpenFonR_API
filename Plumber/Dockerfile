@@ -28,18 +28,9 @@ COPY [".", "./"]
 
 ## RUN R CMD check xml2_*.tar.gz
 
-RUN R -e 'install.packages("XML", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
+## RUN R -e 'install.packages("XML", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
 
-RUN R -e 'install.packages("xml2", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
-
-
-## install R libraries
-RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","dplyr","rlist"))'
-RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
-## RUN R -e 'devtools::install_github("trestletech/plumber")'
-
-
-
+## RUN R -e 'install.packages("xml2", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
 
 
 ## install miniconda
@@ -55,8 +46,29 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
     echo "conda activate base" >> ~/.bashrc
 ENV PATH /opt/conda/bin:$PATH
 
-## install audio-metadata using pip
+
+##
+
+RUN /opt/conda/bin/conda install -c r r-xml
+RUN /opt/conda/bin/conda install -c r r-xml2
+
+
+
+## install R libraries
+RUN R -e 'install.packages(c("devtools","tuneR","renv","reticulate","dplyr","rlist"))'
+#RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
+## RUN R -e 'devtools::install_github("trestletech/plumber")'
+
+
+
+
+
+
+
+## install audio-metadata using pip from conda
 RUN /opt/conda/bin/pip install audio-metadata
+
+
 
 
 # indicate the version of python to use
