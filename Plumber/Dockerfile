@@ -60,14 +60,10 @@ RUN /opt/conda/bin/conda install -c r r-xml2
 
 
 ## install R libraries
-RUN R -e 'install.packages(c("devtools","rlist"))'
+RUN R -e 'install.packages(c("devtools","rlist"), repo="http://cran.rstudio.com/")'
 
 ## RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
 ## RUN R -e 'devtools::install_github("trestletech/plumber")'
-
-
-
-
 
 
 
