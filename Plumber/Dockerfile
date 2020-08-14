@@ -67,7 +67,8 @@ RUN /opt/conda/bin/conda install -c anaconda libxml2
 ## install R libraries
 
 RUN wget https://cran.r-project.org/src/contrib/Archive/XML/XML_3.98-1.20.tar.gz
-RUN R CMD INSTALL --build --no-html --no-multiarch --no-data --no-test-load XML_3.98-1.20.tar.gz
+## RUN R CMD INSTALL --build --no-html --no-multiarch --no-data --no-test-load XML_3.98-1.20.tar.gz
+RUN R CMD INSTALL XML_3.98-1.20.tar.gz
 
 RUN R -e 'install.packages(c("rlist"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
 
