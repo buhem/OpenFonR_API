@@ -90,6 +90,7 @@ function(speaker,callType){
   
   library(dplyr)
   
+  library(stringr)
  
   library(rlist)
   
@@ -155,7 +156,7 @@ function(speaker,callType){
     
     if (is.na(df.list[[i]][3,2]) || as.vector(df.list[[i]][3,2]) == "  "){
       
-      print(i)
+      
       df.list[i] <- NULL
       
       x <- x - 1
