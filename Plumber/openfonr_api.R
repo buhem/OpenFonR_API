@@ -353,7 +353,7 @@ function(speaker,callType){
 
   
   
-  metadataJSON <-       list('@context'="https://schema.org/",
+  metadataJSON <-       list(list('@context'="https://schema.org/",
                              '@type'=c("Dataset","ArchiveComponent"),
                              name=metadata$tags$albumartist,
                              description=metadata$tags$COMM[[1]]$text,
@@ -505,7 +505,8 @@ function(speaker,callType){
                                  )
                                )
                              )
-  )
+                             )
+                             )
   
   
   rm(list = c("destfile","destfile2","tempfile","metadata","url","txtgrid","statut","statut2"))
