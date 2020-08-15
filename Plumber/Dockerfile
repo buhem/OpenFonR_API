@@ -69,8 +69,8 @@ RUN /opt/conda/bin/conda create -p /usr/local/lib/R/new-library -y -c r r-rlist
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate /usr/local/lib/R/new-library" >> ~/.bashrc
 RUN [ -d /usr/local/lib/R/new-library/ ] && echo "yes" || echo "noop"
-RUN set -e locate rlist
-RUN set -e whereis rlist
+RUN locate rlist
+RUN whereis rlist
 
 ## install R libraries
 
@@ -99,8 +99,8 @@ ENV RETICULATE_PYTHON /opt/conda/bin/python
 ## RUN echo 'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.r-project.org"; options(repos=r)})' > ~/.Rprofile
 ## RUN echo 'export R_LIBS_USER="home/r/library"' >> ~/.bash_profile
 ## RUN export R_LIBS_USER="home/r/library"
-RUN echo 'R_LIBS_USER="/usr/local/lib/R/new-library"' > /usr/lib/R/etc/Renviron
-RUN echo 'R_LIBS=\${R_LIBS-"/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library"}' > /usr/lib/R/etc/Renviron
+RUN echo 'R_LIBS_USER="/usr/local/lib/R/new-library"' >> /usr/lib/R/etc/Renviron
+RUN echo 'R_LIBS=\${R_LIBS-"/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library"}' >> /usr/lib/R/etc/Renviron
 RUN R -e 'print(.libPaths())'
 RUN R -e 'if (!requireNamespace("rlist", quietly = TRUE)) print("walu")'
 
