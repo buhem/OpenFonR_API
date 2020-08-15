@@ -19,29 +19,9 @@ LABEL org.label-schema.name="OpenFonR_API" \
 COPY [".", "./"]
 
 
-## install R libraries
-## https://cran.r-project.org/bin/windows/base/old/2.15.3/NEWS.R-2.15.3.html
-## RUN R -e 'options(devtools.install.args = c("--no-multiarch", "--no-test-load"))'
-## INSTALL_opts=c("--install-args","--no-html", "--no-multiarch","--no-data","--no-test-load")
-## RUN R CMD build . --install-args --no-html
 
-RUN R -e 'file.path(R.home("etc"), "Renviron.site")'
 RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr","stringr"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
 
-
-## install xml2
-## https://hub.docker.com/r/jeroenooms/xml2
-## RUN git clone https://github.com/hadley/xml2 \
-##	&& R CMD build xml2 --no-build-vignettes \
-##	&& R CMD INSTALL xml2_*.tar.gz --install-tests
-
-## RUN R -e 'testthat::test_package("xml2"); q("no");' || true
-
-## RUN R CMD check xml2_*.tar.gz
-
-## RUN R -e 'install.packages("XML", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
-
-## RUN R -e 'install.packages("xml2", configure.vars="XML_CONFIG=/usr/local/opt/libxml2/bin/xml2-config")'
 
 
 ## install miniconda
@@ -58,30 +38,13 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux
 ENV PATH /opt/conda/bin:$PATH
 
 
-##
 
-## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c asmeurer r-xml=3.98_1.19
-## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
-## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-curl
-## RUN /opt/conda/bin/conda install -c anaconda libxml2
+
+## install rlist library / doesn't work with r / it cannot find XML library
 RUN set -e mkdir /usr/local/lib/R/new-library
 RUN /opt/conda/bin/conda create -p /usr/local/lib/R/new-library -y -c r r-rlist
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate /usr/local/lib/R/new-library" >> ~/.bashrc
-RUN [ -d /usr/local/lib/R/new-library/ ] && echo "yes" || echo "noop"
-RUN find / -name "*rlist*"
-
-
-## install R libraries
-
-##RUN wget https://cran.r-project.org/src/contrib/Archive/XML/XML_3.98-1.20.tar.gz
-## RUN R CMD INSTALL --build --no-html --no-multiarch --no-data --no-test-load XML_3.98-1.20.tar.gz
-## RUN R CMD INSTALL XML_3.98-1.20.tar.gz
-
-## RUN R -e 'install.packages(c("rlist"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
-
-## RUN R -e 'install.packages("https://github.com/hadley/xml2/archive/master.tar.gz", type = "source", repos = NULL)'
-## RUN R -e 'devtools::install_github("trestletech/plumber")'
+    echo "conda activate /usr/local/lib/R/new-library/lib/R/library" >> ~/.bashrc
 
 
 
@@ -96,13 +59,10 @@ ENV RETICULATE_PYTHON /opt/conda/bin/python
 
 
 
-## RUN echo 'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.r-project.org"; options(repos=r)})' > ~/.Rprofile
-## RUN echo 'export R_LIBS_USER="home/r/library"' >> ~/.bash_profile
-## RUN export R_LIBS_USER="home/r/library"
+## set the path for rlist
 RUN echo 'R_LIBS_USER="/usr/local/lib/R/new-library/lib/R/library"' >> /usr/lib/R/etc/Renviron
 RUN echo 'R_LIBS=\${R_LIBS-"/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library"}' >> /usr/lib/R/etc/Renviron
-RUN R -e 'print(.libPaths())'
-RUN R -e 'if (!requireNamespace("rlist", quietly = TRUE)) print("walu")'
+
 
 ## EXPOSE 8000
 ENTRYPOINT ["R", "-e", "pr <- plumber::plumb(commandArgs()[4]); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT')))"]
