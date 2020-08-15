@@ -62,9 +62,11 @@ ENV PATH /opt/conda/bin:$PATH
 ## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-xml2
 ## RUN /opt/conda/bin/conda create -p /usr/lib/R/site-library -y -c r r-curl
 ## RUN /opt/conda/bin/conda install -c anaconda libxml2
+RUN mkdir /home/r/library
 RUN /opt/conda/bin/conda create -p /home/r/library -y -c r r-rlist
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate /home/r/library" >> ~/.bashrc
+RUN [ -d /home/r/library/rlist ] && echo "yes" || echo "noop"
 
 ## install R libraries
 
@@ -91,7 +93,8 @@ ENV RETICULATE_PYTHON /opt/conda/bin/python
 
 
 ## RUN echo 'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.r-project.org"; options(repos=r)})' > ~/.Rprofile
-RUN echo 'export R_LIBS_USER="home/r/library"' >> ~/.bash_profile
+## RUN echo 'export R_LIBS_USER="home/r/library"' >> ~/.bash_profile
+RUN export R_LIBS_USER="home/r/library"
 RUN R -e 'print(.libPaths())'
 RUN R -e 'if (!requireNamespace("rlist", quietly = TRUE)) print("walu")'
 
