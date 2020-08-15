@@ -103,7 +103,7 @@ function(speaker,callType){
   destfile2 <- paste0(tempfile,".TextGrid")
   
   
-  if (!file.exists(destfile)==T) {
+  if (!file.exists(destfile2)==T) {
     
     
     
