@@ -1,0 +1,320 @@
+{
+  "@context": [
+    "https://schema.org/"
+  ],
+  "@type": [
+    "Dataset",
+    "ArchiveComponent"
+  ],
+  "name": [
+    "Alveolar rhotic study"
+  ],
+  "description": [
+    "This recording was made for my thesis (https://tel.archives-ouvertes.fr/tel-02079768)"
+  ],
+  "variableMeasured": [
+    "I did this recording to study the four alveolar rhotics discovered in Sud-Oranais: simple tap r; simple triil rr: pharyngealised tap R; pharyngealised trill RR"
+  ],
+  "inLanguage": [
+    "Berber Sud-Oranais sout3056 Asla"
+  ],
+  "license": [
+    "CC-BY-NC-ND"
+  ],
+  "citation": [
+    "https://hal.archives-ouvertes.fr/tel-02079768v2"
+  ],
+  "isPartOf": {
+    "@type": [
+      "WebApplication"
+    ],
+    "name": [
+      "Æ±pnFÊŠnR"
+    ],
+    "abstract": [
+      "The purpose of this web application, called Æ±pnFÊŠnR, is to offer an interactive signal processing of a phonetic corpus on the Alveolar Rhotics. I have created this web-app, made with Shiny, in order to share a sample of my data and make my work available to the scientific community."
+    ],
+    "url": [
+      "https://sudoranais.Shinyapps.io/Analysis_Processing_Rhotic_Alveolar"
+    ],
+    "applicationCategory": [
+      "signal processing"
+    ],
+    "softwareRequirements": [
+      "R"
+    ],
+    "citation": [
+      "10.5281/zenodo.3363050"
+    ],
+    "dateCreated": [
+      "2018"
+    ],
+    "license": [
+      "https://opensource.org/licenses/MIT"
+    ],
+    "maintainer": {
+      "@type": [
+        "Person"
+      ],
+      "sameAs": [
+        "http://orcid.org/0000-0003-2655-686X"
+      ],
+      "name": [
+        "Mohamed El Idrissi"
+      ],
+      "jobTitle": [
+        "Researcher"
+      ],
+      "contactPoint": {
+        "@type": [
+          "ContactPoint"
+        ],
+        "email": [
+          "mohamed.elidrissi@inalco.fr",
+          "mohamed.el-idrissi@outlook.com"
+        ]
+      }
+    },
+    "creator": {
+      "@type": [
+        "Person"
+      ],
+      "name": [
+        "Mohamed El Idrissi"
+      ],
+      "jobTitle": [
+        "Researcher"
+      ],
+      "contactPoint": {
+        "@type": [
+          "ContactPoint"
+        ],
+        "email": [
+          "mohamed.elidrissi@inalco.fr",
+          "mohamed.el-idrissi@outlook.com"
+        ]
+      }
+    },
+    "potentialAction": {
+      "@type": [
+        "SearchAction"
+      ],
+      "target": [
+        "https://sudoranais.Shinyapps.io/Analysis_Processing_Rhotic_Alveolar/metadata?speaker={query}&callType={query}"
+      ],
+      "query": [
+        "required"
+      ]
+    }
+  },
+  "maintainer": {
+    "@type": [
+      "Person"
+    ],
+    "sameAs": [
+      "http://orcid.org/0000-0003-2655-686X"
+    ],
+    "name": [
+      "Mohamed El Idrissi"
+    ],
+    "jobTitle": [
+      "Researcher"
+    ],
+    "contactPoint": {
+      "@type": [
+        "ContactPoint"
+      ],
+      "email": [
+        "mohamed.elidrissi@inalco.fr",
+        "mohamed.el-idrissi@outlook.com"
+      ]
+    }
+  },
+  "creator": {
+    "@type": [
+      "Person"
+    ],
+    "name": [
+      "Mohamed El Idrissi"
+    ],
+    "jobTitle": [
+      "Researcher"
+    ],
+    "contactPoint": {
+      "@type": [
+        "ContactPoint"
+      ],
+      "email": [
+        "mohamed.elidrissi@inalco.fr",
+        "mohamed.el-idrissi@outlook.com"
+      ]
+    }
+  },
+  "includedInDataCatalog": {
+    "@type": [
+      "DataCatalog"
+    ],
+    "name": [
+      "Sud-Oranais collection"
+    ]
+  },
+  "identifier": [
+    "10.5281/zenodo.3363050"
+  ],
+  "about": {
+    "name": [
+      "Phonetic study"
+    ],
+    "about": {
+      "name": [
+        "Linguistics"
+      ]
+    }
+  },
+  "temporalCoverage": [
+    "2016"
+  ],
+  "spatialCoverage": {
+    "@type": [
+      "Place"
+    ],
+    "name": [
+      "Asla"
+    ],
+    "geo": {
+      "@type": [
+        "GeoCoordinates"
+      ],
+      "latitude": [
+        33.0044
+      ],
+      "longitude": [
+        -0.078
+      ]
+    }
+  },
+  "distribution": {
+    "@type": [
+      "DataDownload"
+    ],
+    "name": {
+      "@type": [
+        "PronounceableText"
+      ],
+      "inLanguage": [
+        "Berber Sud-Oranais sout3056 Asla"
+      ],
+      "textValue": [
+        "abrid"
+      ],
+      "speechToTextMarkup": [
+        "IPA"
+      ],
+      "phoneticText": [
+        "[]"
+      ]
+    },
+    "actor": {
+      "@type": [
+        "PerformanceRole"
+      ],
+      "actor": {
+        "@type": [
+          "Person"
+        ],
+        "name": [
+          "Informant 2"
+        ]
+      }
+    },
+    "additionalProperty": {
+      "2": {
+        "@type": [
+          "PropertyValue"
+        ],
+        "name": [
+          "Sample rate"
+        ],
+        "value": [
+          44100
+        ],
+        "unitText": [
+          "Hz"
+        ]
+      },
+      "3": {
+        "@type": [
+          "PropertyValue"
+        ],
+        "name": [
+          "Bit depth"
+        ],
+        "value": [
+          16
+        ],
+        "unitText": [
+          "Hz"
+        ]
+      },
+      "name": [
+        "Resolution"
+      ]
+    },
+    "measurementTechnique": [
+      "digital recording (Olympus WS813); electret microphone (MM701)."
+    ],
+    "encodingFormat": [
+      "audio/x-wav"
+    ],
+    "subjectOf": {
+      "@type": [
+        "CreativeWork"
+      ],
+      "name": [
+        "API Metadata"
+      ],
+      "url": [
+        "https://openfonrapi-g3q3eh375a-uc.a.run.app/metadata?"
+      ],
+      "encodingFormat": [
+        "application/json"
+      ],
+      "potentialAction": {
+        "@type": [
+          "SearchAction"
+        ],
+        "target": [
+          "https://openfonrapi-g3q3eh375a-uc.a.run.app/metadata?speaker={query}&callType={query}"
+        ],
+        "query": [
+          "required"
+        ]
+      }
+    },
+    "subjectOf.1": {
+      "@type": [
+        "CreativeWork"
+      ],
+      "name": [
+        "API Sound"
+      ],
+      "url": [
+        "https://openfonrapi-g3q3eh375a-uc.a.run.app/wav?"
+      ],
+      "encodingFormat": [
+        "application/json"
+      ],
+      "potentialAction": {
+        "@type": [
+          "SearchAction"
+        ],
+        "target": [
+          "https://openfonrapi-g3q3eh375a-uc.a.run.app/wav?speaker={query}&callType={query}"
+        ],
+        "query": [
+          "required"
+        ]
+      }
+    }
+  }
+} 
