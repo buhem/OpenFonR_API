@@ -69,7 +69,7 @@ RUN /opt/conda/bin/conda create -p /usr/local/lib/R/new-library -y -c r r-rlist
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate /usr/local/lib/R/new-library" >> ~/.bashrc
 RUN [ -d /usr/local/lib/R/new-library/ ] && echo "yes" || echo "noop"
-RUN locate rlist
+RUN find / -name "*rlist*"
 RUN whereis rlist
 
 ## install R libraries
