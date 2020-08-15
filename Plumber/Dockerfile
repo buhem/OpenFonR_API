@@ -26,7 +26,7 @@ COPY [".", "./"]
 ## RUN R CMD build . --install-args --no-html
 
 RUN R -e 'file.path(R.home("etc"), "Renviron.site")'
-RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
+RUN R -e 'install.packages(c("tuneR","renv","reticulate","dplyr","stringr"),repo="http://cran.rstudio.com/",dependencies=c("Depends","Imports","LinkingTo"),INSTALL_opts=c("--no-html","--no-multiarch","--no-data","--no-test-load"))'
 
 
 ## install xml2
