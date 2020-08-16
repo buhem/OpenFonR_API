@@ -59,7 +59,7 @@ function(speaker,callType){
   relative <- "_w_907223f2"
   
   
-  url <- paste0(base,"/",relative,"/",speaker,"/",callType,".wav")
+  url <- paste0(base,"/",relative,"/",relative,"/",speaker,"/",callType,".wav")
   
   
   
@@ -144,7 +144,7 @@ function(speaker,callType){
   relative <- "_w_907223f2"
   
   
-  url2 <- paste0(base,"/",relative,"/",speaker,"/",callType,".TextGrid")
+  url2 <- paste0(base,"/",relative,"/",relative,"/",speaker,"/",callType,".TextGrid")
   
   
   tempfile <- tempfile()
@@ -354,7 +354,7 @@ function(speaker,callType){
   
   relative <- "_w_907223f2"
   
-  url <-  paste0(base,"/",relative,"/",speaker,"/",callType)
+  url <-  paste0(base,"/",relative,"/",relative,"/",speaker,"/",callType)
 
   
   
@@ -593,3 +593,8 @@ function(speaker,callType){
   metadataJSON
   
 }
+
+
+
+
+
