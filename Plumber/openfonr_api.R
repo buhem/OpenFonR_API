@@ -6,6 +6,9 @@
 
 
 
+
+
+
 #* @filter cors
 cors <- function(req, res) {
   
@@ -21,6 +24,11 @@ cors <- function(req, res) {
   }
   
 }
+
+
+
+
+
 
 
 
@@ -46,8 +54,14 @@ function(speaker,callType){
 
   
   
-  url <- paste0("https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar/_w_0f304dee/",speaker,"/",callType,".wav")
-
+  base <- "https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar"
+  
+  relative <- "_w_907223f2"
+  
+  
+  url <- paste0(base,"/",relative,"/",speaker,"/",callType,".wav")
+  
+  
   
   tempfile <- tempfile()
   
@@ -59,9 +73,18 @@ function(speaker,callType){
     
     statut <- print(try(download.file(url,destfile,mode="wb"), TRUE))
     
-    
+    i=0
 
     while (is.character(statut) == T) {
+      
+      
+      i++
+        
+        if (i == 5)  {
+          
+          break
+          
+        }
 
             
       statut <- print(try(download.file(url,destfile,mode="wb"), TRUE))      
@@ -111,12 +134,17 @@ function(speaker,callType){
   
   library(dplyr)
   
-  library(stringr)
- 
   library(rlist)
   
+  library(stringr)
   
-  url2 <- paste0("https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar/_w_0f304dee/",speaker,"/",callType,".TextGrid")
+  
+  base <- "https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar"
+  
+  relative <- "_w_907223f2"
+  
+  
+  url2 <- paste0(base,"/",relative,"/",speaker,"/",callType,".TextGrid")
   
   
   tempfile <- tempfile()
@@ -131,9 +159,18 @@ function(speaker,callType){
     
     statut2 <- print(try(download.file(url2,destfile2,mode="wb"), TRUE))
     
-    
+    i=0
     
     while (is.character(statut2) == T) {
+      
+      
+      i++
+        
+        if (i == 5)  {
+          
+          break
+          
+        }
       
       statut2 <- print(try(download.file(url2,destfile2,mode="wb"), TRUE))
       
@@ -313,11 +350,14 @@ function(speaker,callType){
   
 
 
+  base <- "https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar"
   
+  relative <- "_w_907223f2"
+  
+  url <-  paste0(base,"/",relative,"/",speaker,"/",callType)
 
   
   
-  url <- paste0("https://sudoranais.shinyapps.io/Analysis_Processing_Rhotic_Alveolar/_w_0f304dee/",speaker,"/",callType)
 
   
   
@@ -337,9 +377,17 @@ function(speaker,callType){
     
     statut2 <- print(try(download.file(paste0(url,".TextGrid"),destfile2,mode="wb"), TRUE))
     
-    
+    i=0
     
     while (is.character(statut) == T) {
+      
+      i++
+        
+        if (i == 5)  {
+          
+          break
+          
+        }
       
       statut <- print(try(download.file(paste0(url,".wav"),destfile,mode="wb"), TRUE))      
      
@@ -347,6 +395,15 @@ function(speaker,callType){
     }
     
     while (is.character(statut2) == T) {
+      
+      
+      i++
+        
+        if (i == 5)  {
+          
+          break
+          
+        }
       
       statut2 <- print(try(download.file(paste0(url,".TextGrid"),destfile2,mode="wb"), TRUE))
       
@@ -526,8 +583,8 @@ function(speaker,callType){
                                  )
                                )
                              )
-                             )
-                             )
+  )
+  )
   
   
   rm(list = c("destfile","destfile2","tempfile","metadata","url","txtgrid","statut","statut2"))
@@ -536,4 +593,3 @@ function(speaker,callType){
   metadataJSON
   
 }
-
